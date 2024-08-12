@@ -1,0 +1,79 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url(reset.css);
+
+
+
+/* 변수 */
+
+:root{
+  --text-color : #F0F0F2;
+  --white : #fff;
+  --fz : 16px;
+  --menu : 21px;
+  --lh : 27px;
+}
+
+/* BODY */
+
+body{
+ color: var(--text-color);
+}
+
+/* HEADER */
+
+.top_nav{
+  width: 100%;
+  height: 81px;
+  background: linear-gradient(rgba(0, 0, 0, .7) 81px, rgba(0, 0,0, .5) 81px);
+  display: flex;
+  justify-content: space-around;
+}
+
+.top_nav .logo{
+  width: 137px;
+  height: 39px;
+  margin-top: 25px;
+  background: url(../image/Logo_sub.png) no-repeat;
+  text-indent: -9999em;
+}
+
+.top_nav nav > ul{
+  display: flex;
+  gap: 100px;
+  font-size: var(--menu);
+  font-weight: 500;
+}
+
+.top_nav nav > ul li{
+  margin-top: 35px;
+}
+
+.top_nav .main_menu > ul{
+  display: none;
+  transition: height 0.5s ease-out;
+}
+
+.top_nav .main_menu:hover ul{
+  display: block;
+}
+
+.top_nav > ul{
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.top_nav > ul a{
+  font-size: var(--menu);
+  font-weight: 500;
+}
+
+.top_nav a{
+  color: var(--text-color);
+}
+
+.full-video{
+  width: 100%;
+  height: 100%;
+}
