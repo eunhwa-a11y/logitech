@@ -9,9 +9,18 @@
 :root{
   --text-color : #F0F0F2;
   --white : #fff;
+  --container : 1920px;
   --fz : 16px;
-  --menu : 21px;
   --lh : 27px;
+  --menu : 21px;
+}
+
+
+/* 레이아웃 */
+
+.container{
+  width: var(--container);
+  margin: 0 auto;
 }
 
 /* BODY */
@@ -22,58 +31,59 @@ body{
 
 /* HEADER */
 
-.top_nav{
+header{
   width: 100%;
-  height: 81px;
-  background: linear-gradient(rgba(0, 0, 0, .7) 81px, rgba(0, 0,0, .5) 81px);
+  height: 35px;
+  padding: 30px 0;
+  background: rgba(0, 0, 0, .7);
+  align-items: center;
+}
+
+.top_nav{
   display: flex;
   justify-content: space-around;
-}
-
-.top_nav .logo{
-  width: 137px;
-  height: 39px;
-  margin-top: 25px;
-  background: url(../image/Logo_sub.png) no-repeat;
-  text-indent: -9999em;
-}
-
-.top_nav nav > ul{
-  display: flex;
-  gap: 100px;
-  font-size: var(--menu);
-  font-weight: 500;
-}
-
-.top_nav nav > ul li{
-  margin-top: 35px;
-}
-
-.top_nav .main_menu > ul{
-  display: none;
-  transition: height 0.5s ease-out;
-}
-
-.top_nav .main_menu:hover ul{
-  display: block;
-}
-
-.top_nav > ul{
-  display: flex;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.top_nav > ul a{
-  font-size: var(--menu);
-  font-weight: 500;
 }
 
 .top_nav a{
   color: var(--text-color);
 }
 
-.full-video{
-  width: 100%;
-  height: 100%;
+.top_nav .logo{
+  width: 130px;
+  height: 35px;
+  background: url(../image/Logo_sub.png) no-repeat;
+  display: block;
+  text-indent: -9999em;
+}
+
+.top_nav nav > ul{
+  display: flex;
+  gap: 100px;
+}
+
+.top_nav .login{
+  display: flex;
+}
+
+.login{
+  padding: 10px 0;
+  gap: 30px;
+}
+
+nav > ul > li{
+  position: relative;
+  line-height: 40px;
+}
+
+nav > ul > li ul{
+  width: 100px;
+  display: none;
+  position: absolute;
+}
+
+nav > ul > li:hover ul{
+  width: 545px;
+  padding: 20px;
+  display: block;
+  background: rgba(0, 0, 0, .5);
 }
