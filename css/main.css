@@ -9,7 +9,9 @@
 :root{
   --text-color : #F0F0F2;
   --white : #fff;
+  --container : 1920px;
   --fz : 16px;
+  --lh : 27px;
   --lh : 27px;
   --menu : 21px;
 }
@@ -42,10 +44,17 @@ header .top_nav > div{
   color: var(--text-color);
 }
 
+.top_nav a{
+  color: var(--text-color);
+}
+
 .top_nav .logo{
   width: 130px;
   height: 35px;
+  width: 130px;
+  height: 35px;
   background: url(../image/Logo_sub.png) no-repeat;
+  display: block;
   text-indent: -9999em;
 }
 
@@ -87,3 +96,10 @@ nav > ul > li ul li{
 
 
 
+
+nav > ul > li:hover ul{
+  width: 545px;
+  padding: 20px;
+  display: block;
+  background: rgba(0, 0, 0, .5);
+}
