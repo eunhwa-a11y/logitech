@@ -13,7 +13,7 @@
   --lh : 27px;
   --menu : 21px;
   --main : 36px;
-  --econdary : #333;
+  --secondary : #333;
   --primary: #69A4F0;
 }
 
@@ -80,7 +80,7 @@ nav > ul > li{
 
 nav > ul > li ul{
   display: none;
-  margin-top: 20px;
+  padding-top: 20px;
   align-items: center;
   transition: 0.5s ease-out;
   position: absolute;
@@ -156,7 +156,23 @@ form input{
   height: 100%;
   border: none;
   background: none;
-  outline: none;
+  outline: none;;
+}
+
+form input::placeholder{
+  border-color: var(--white);
+}
+
+form:hover{
+  border: 1px solid var(--primary);
+}
+
+form:hover i{
+  color: var(--secondary);
+}
+
+form:hover input::placeholder{
+  color: var(--secondary);
 }
 
 form button{
@@ -178,6 +194,10 @@ form button{
   gap: 88px;
 }
 
+.slide-wrapper .slide-containar:hover{
+  left: -100%;
+}
+
 .slide-wrapper .slide-containar li{
   width: 400px;
   height: 594px;
@@ -192,7 +212,7 @@ form button{
   font-weight: 700;
   margin-top: 56px;
   text-align: center;
-  color: var(--Secondary);
+  color: var(--secondary);
 }
 
 .slide-wrapper .slide-containar li figure{
@@ -219,7 +239,7 @@ form button{
   box-sizing: border-box;
   margin-top: 27px;
   padding-top: 16px;
-  background: var(--Secondary);
+  background: var(--secondary);
   border-radius: 5px;
   text-align: center;
 }
@@ -241,6 +261,9 @@ form button{
   background: #595858;
 }
 
+.slide-wrapper .slide-containar  a:hover{
+  background: var(--text-color);
+}
 
 /* SECTION */
 
@@ -318,22 +341,20 @@ form button{
 /* FOOTER */
 
 footer .containar{
-  width: 100vw;
+  width: 100%;
   height: 500px;
   background: rgba(0, 0, 0, .7);
 }
 
 footer .containar .inner{
+  width: 1272px;
+  margin: 0 auto;
   display: flex;
-  gap: 220px;
-  justify-content: center;
+  gap: 200px;
+  justify-content: space-between;
   align-items: center;
   padding-top: 54px;
   box-sizing: border-box;
-}
-
-footer .containar .inner .company{
-  width: 723px;
 }
 
 footer .containar .inner .company img{
@@ -365,7 +386,6 @@ footer .containar .inner .number em{
 }
 
 footer .containar .inner .sns{
-  width: 240px;
   font-size: 40px;
   display: flex;
   gap: 60px;
@@ -377,8 +397,25 @@ footer .containar .clause{
   gap: 40px;
   justify-content: center;
   margin-top: 95px;
+  position: relative;
 }
 
 footer .containar .clause a{
   color: var(--white);
+}
+
+footer .containar .center{
+  text-align: center;
+  margin: 52px;
+}
+
+footer .containar .clause:after{
+  content: '';
+  background: var(--white);
+  width: 1272px;
+  height: 1px;
+  position: absolute;
+  left: -50%;
+  transform: translateX(100%);
+  margin-top: 42px;
 }
