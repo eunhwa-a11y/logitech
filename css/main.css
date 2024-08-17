@@ -21,7 +21,11 @@
 
 body{
   color: var(--text-color);
+  height: 100vh;
+  position: relative;
+  transition: 0.5s ease-out;
 }
+
 
 /* HEADER */
 
@@ -38,12 +42,8 @@ header .top_nav > div{
   width: 100%;
   height: 81px;
   position: absolute;
-  margin: 0 auto;
   background: linear-gradient(rgba(0, 0, 0, .7) 81px, rgba(0, 0, 0, .5) 81px);
-}
-
-.top_nav a{
-  color: var(--text-color);
+  transition: height 0.5s ease-out;
 }
 
 .top_nav a{
@@ -82,7 +82,6 @@ nav > ul > li ul{
   display: none;
   padding-top: 20px;
   align-items: center;
-  transition: 0.5s ease-out;
   position: absolute;
 }
 
@@ -145,11 +144,12 @@ main{
 form{
   width: 624px;
   height: 60px;
-  margin-top: 103px;
   border: 1px solid var(--white);
   display: flex;
   justify-content: center;
   position: absolute;
+  top: 10%;
+  transform: translateY(10%);
 }
 
 form input{
@@ -163,15 +163,16 @@ form input::placeholder{
   border-color: var(--white);
 }
 
-form:hover{
+form.search{
   border: 1px solid var(--primary);
+  background: rgba(255, 255, 255, .05);
 }
 
-form:hover i{
+form.search i{
   color: var(--secondary);
 }
 
-form:hover input::placeholder{
+form.search input::placeholder{
   color: var(--secondary);
 }
 
@@ -185,8 +186,10 @@ form button{
 .slide-wrapper{
   width: 1376px;
   position: relative;
-  margin-top: 243px;
+  top: 50%;
+  transform: translateY(-20%);
   overflow: hidden;
+  align-items: center;
 }
 
 .slide-wrapper .slide-containar{
@@ -241,10 +244,16 @@ form button{
   text-align: center;
 }
 
+.slide-wrapper .slide-containar li a:hover{
+  background: none;
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+}
+
 .slide-wrapper .slide-containar .pager{
   position: absolute;
   left: 50%;
-  top: 90%;
+  top: 50%;
   transform: translateX(-20%);
   text-indent: -9999em;
   display: flex;
@@ -258,7 +267,7 @@ form button{
   background: #595858;
 }
 
-.slide-wrapper .slide-containar  a:hover{
+.slide-wrapper .slide-containar .pager a:hover{
   background: var(--text-color);
 }
 
@@ -338,9 +347,18 @@ form button{
 /* FOOTER */
 
 footer .containar{
+  position: fixed;
+  bottom: -100%;
+  left: 0;
   width: 100%;
   height: 500px;
   background: rgba(0, 0, 0, .7);
+  transition: 0.5s ease-in-out;
+  z-index: 1;
+}
+
+footer .containar.visible{
+  bottom: 0;
 }
 
 footer .containar .inner{
@@ -413,7 +431,7 @@ footer .containar .clause:after{
   width: 1272px;
   height: 1px;
   position: absolute;
-  left: -50%;
-  transform: translateX(100%);
+  left: 50%;
+  transform: translateX(-50%);
   margin-top: 42px;
 }
