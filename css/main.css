@@ -23,6 +23,9 @@ body{
   color: var(--text-color);
   height: 100vh;
   position: relative;
+  margin: 0;
+  top: 0;
+  overflow: hidden;
   transition: 0.5s ease-out;
 }
 
@@ -61,6 +64,7 @@ header .top_nav > div{
 .top_nav nav > ul{
   display: flex;
   gap: 100px;
+  position: relative;
 }
 
 .top_nav .login{
@@ -77,6 +81,7 @@ nav > ul > li{
   position: relative;
   cursor: pointer;
 }
+
 
 nav > ul > li ul{
   display: none;
@@ -121,6 +126,7 @@ header button{
   border: none;
   background: none;
   z-index: 1;
+  cursor: pointer;
 }
 
 header button i{
@@ -189,16 +195,21 @@ form button{
   top: 50%;
   transform: translateY(-20%);
   overflow: hidden;
-  align-items: center;
+  /* align-items: center; */
 }
 
-.slide-wrapper .slide-containar{
+.slide-wrapper .slide-container{
+  width: 2840px;
+  height: 594px;
   display: flex;
   gap: 88px;
+  position: relative;
+  left: 0;
+  transition: 0.3s ease-out;
 }
 
 
-.slide-wrapper .slide-containar li{
+.slide-wrapper .slide-container li{
   width: 400px;
   height: 594px;
   background: var(--white);
@@ -207,7 +218,7 @@ form button{
   align-items: center;
 }
 
-.slide-wrapper .slide-containar h2{
+.slide-wrapper .slide-container h2{
   font-size: 36px;
   font-weight: 700;
   margin-top: 56px;
@@ -215,7 +226,7 @@ form button{
   color: var(--secondary);
 }
 
-.slide-wrapper .slide-containar li figure{
+.slide-wrapper .slide-container li figure{
   width: 400px;
   height: 300px;
   position: relative;
@@ -226,12 +237,12 @@ form button{
   align-items: center;
 }
 
-.slide-wrapper .slide-containar li img{
+.slide-wrapper .slide-container li img{
   position: absolute;
   display: block;
 }
 
-.slide-wrapper .slide-containar li a{
+.slide-wrapper .slide-container li a{
   width: 300px;
   height: 54px;
   color: var(--white);
@@ -244,30 +255,32 @@ form button{
   text-align: center;
 }
 
-.slide-wrapper .slide-containar li a:hover{
+.slide-wrapper .slide-container li a:hover{
   background: none;
   color: var(--secondary);
   border: 1px solid var(--secondary);
 }
 
-.slide-wrapper .slide-containar .pager{
+.slide-wrapper .pager{
+  width: 100%;
   position: absolute;
-  left: 50%;
   top: 50%;
-  transform: translateX(-20%);
+  left: 0;
+  right: 0;
   text-indent: -9999em;
   display: flex;
+  justify-content: center;
   gap: 20px;
 }
 
-.slide-wrapper .slide-containar .pager a{
+.slide-wrapper .pager a{
   width: 15px;
   height: 15px;
   border-radius: 50%;
   background: #595858;
 }
 
-.slide-wrapper .slide-containar .pager a:hover{
+.slide-wrapper .pager a.active{
   background: var(--text-color);
 }
 
@@ -277,76 +290,68 @@ form button{
 .ss-slide-wrapper{
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
   position: relative;
 }
 
 
-.ss-slide-wrapper .ss-slide-containar{
+.ss-slide-wrapper .ss-slide-container{
+  position: absolute;
   width: 100%;
   height: 100%;
   display: flex;
-  position: absolute;
 }
 
-.ss-slide-wrapper .ss-slide-containar li{
-  width: 100%;
+.ss-slide-wrapper .ss-slide-container.animated{
+  left: 0;
+  transition: left 0.4s;
+}
+
+.ss-slide-wrapper .ss-slide-container li{
+  position: absolute;
+  left: 0;
+  top: 0%;
   height: 100%;
-  position: absolute;
+  width: 100%;
+  text-align: center;
 }
 
-.ss-slide-wrapper .ss-slide-containar figure img{
-  min-width: 100%;
-  min-height: 100%;
-  position: absolute;
-  z-index: -1;
+.ss-slide-wrapper .ss-slide-container figure img{
+  width: 100%;
+  height: 100%; 
+  background-position: center center;
+  object-fit: cover;
 }
 
-.ss-slide-wrapper .ss-slide-containar li .txt{
+.ss-slide-wrapper .ss-slide-container li .txt{
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
 }
 
-.ss-slide-wrapper .ss-slide-containar li .txt h3{
+.ss-slide-wrapper .ss-slide-container li .txt h3{
   font-size: 65px;
   font-weight: 700;
   margin-top: 16px;
 }
 
-.ss-slide-wrapper .ss-slide-containar li .txt h4{
+.ss-slide-wrapper .ss-slide-container li .txt h4{
   font-size: var(--main);
   font-weight: 700;
 }
 
-.ss-slide-wrapper .ss-slide-containar li .txt p{
+.ss-slide-wrapper .ss-slide-container li .txt p{
   font-size: var(--menu);
   font-weight: 700;
   margin-top: 16px;
 }
 
-.ss-slide-wrapper .ss-slide-containar .ss-slide1{
-  left: 0;
-}
-
-.ss-slide-wrapper .ss-slide-containar .ss-slide2{
-  left: 100%;
-}
-
-.ss-slide-wrapper .ss-slide-containar .ss-slide3{
-  left: 200%;
-}
-
-.ss-slide-wrapper .ss-slide-containar .ss-slide4{
-  left: 300%;
-}
 
 
 /* FOOTER */
 
-footer .containar{
+footer .container{
   position: fixed;
   bottom: -100%;
   left: 0;
@@ -354,14 +359,14 @@ footer .containar{
   height: 500px;
   background: rgba(0, 0, 0, .7);
   transition: 0.5s ease-in-out;
-  z-index: 1;
+  z-index: 5;
 }
 
-footer .containar.visible{
+footer .container.visible{
   bottom: 0;
 }
 
-footer .containar .inner{
+footer .container .inner{
   width: 1272px;
   margin: 0 auto;
   display: flex;
@@ -372,42 +377,42 @@ footer .containar .inner{
   box-sizing: border-box;
 }
 
-footer .containar .inner .company img{
+footer .container .inner .company img{
   margin-bottom: 50px;
 }
 
-footer .containar .inner .company ul{
+footer .container .inner .company ul{
   display: flex;
   gap: 30px;
   margin-bottom: 20px;
 }
 
-footer .containar .inner .company ul a{
+footer .container .inner .company ul a{
   color: var(--white);
   font-weight: 700;
 }
 
-footer .containar .inner .call{
+footer .container .inner .call{
   font-size: var(--menu);
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-footer .containar .inner .number em{
+footer .container .inner .number em{
   font-size: var(--main);
   font-weight: 700;
   color: var(--primary);
   margin-right: 10px;
 }
 
-footer .containar .inner .sns{
+footer .container .inner .sns{
   font-size: 40px;
   display: flex;
   gap: 60px;
   margin-top: 33px;
 }
 
-footer .containar .clause{
+footer .container .clause{
   display: flex;
   gap: 40px;
   justify-content: center;
@@ -415,17 +420,17 @@ footer .containar .clause{
   position: relative;
 }
 
-footer .containar .clause a{
+footer .container .clause a{
   font-size: 16px;
   color: var(--white);
 }
 
-footer .containar .center{
+footer .container .center{
   text-align: center;
   margin: 52px;
 }
 
-footer .containar .clause:after{
+footer .container .clause:after{
   content: '';
   background: var(--white);
   width: 1272px;
