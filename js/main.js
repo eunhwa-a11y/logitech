@@ -189,20 +189,19 @@ allSsSlides.forEach((slide, idx) => {
 function goToSlide(num) {
   ssSlideContainer.style.left = `${-num * 100}%`;
   ssCurrentIdx = num;
-}
 
-if(ssCurrentIdx === -5){
-  setTimeout(() => {
-    ssSlideContainer.classList.remove('animated');
-    ssSlideContainer.style.left = 0;
-    ssCurrentIdx = 0;
-  }, 400);
-  setTimeout(() => {
-    ssSlideContainer.classList.add('animated');
-  }, 500);
-  
+  if(ssCurrentIdx === -5){
+    setTimeout(() => {
+      ssSlideContainer.classList.remove('animated');
+      ssSlideContainer.style.left = 0;
+      ssCurrentIdx = 0;
+    }, 400);
+    setTimeout(() => {
+      ssSlideContainer.classList.add('animated');
+    }, 500);
+    
+  }
 }
-
 // 자동 슬라이드
 
 function AutoSlide() {
