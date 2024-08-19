@@ -28,6 +28,19 @@ body{
   transition: 0.5s ease-out;
 }
 
+.cookie{
+  width: 400px;
+  height: 500px;
+  position: fixed;
+  line-height: 27px;
+  top: 150px;
+  left: 100px;
+  padding: 40px 20px;
+  border: 2px solid var(--primary);
+  background: var(--white);
+  color: #222222;
+}
+
 
 /* HEADER */
 
