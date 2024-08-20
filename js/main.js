@@ -159,56 +159,60 @@ const ssSlideWrapper = document.querySelector('.ss-slide-wrapper');
 const ssSlideContainer = ssSlideWrapper.querySelector('.ss-slide-container');
 let ssSlides = ssSlideContainer.querySelectorAll('.ss-slide-container li');
 const ssSlideCount = ssSlides.length;
-let ssCurrentIdx = 0;
+let ssCurrentIdx = ssSlideCount;
 let timer;
-const ssPager = ssSlideWrapper.querySelector('pager');
+const ssPager = ssSlideWrapper.querySelector('.pager');
 let ssSlideWidth = ssSlideWrapper.offsetWidth;
 
+// 슬라이드 복사본 생성
 
-// 슬라이드 복사본
-
-for(let i = 0; i < ssSlideCount; i++){
-  let cloneSlide = ssSlides[i].cloneNode('true');
+for (let i = 0; i < ssSlideCount; i++) {
+  let cloneSlide = ssSlides[i].cloneNode(true);
   cloneSlide.classList.add('clone');
   ssSlideContainer.appendChild(cloneSlide);
 }
 
-for(let i = ssSlideCount - 1; i >= 0; i--){
-  let cloneSlide = ssSlides[i].cloneNode('true');
+for (let i = ssSlideCount - 1; i >= 0; i--) {
+  let cloneSlide = ssSlides[i].cloneNode(true);
   cloneSlide.classList.add('clone');
   ssSlideContainer.prepend(cloneSlide);
 }
 
-// 슬라이드 복사본 포함 배치
+// 모든 슬라이드 재배치
 
 let allSsSlides = ssSlideContainer.querySelectorAll('.ss-slide-container li');
-
 allSsSlides.forEach((slide, idx) => {
-  slide.style.left = `${idx *100}%`;
-})
+  slide.style.left = `${idx * 100}%`;
+});
+
+
+ssSlideContainer.style.left = `-${ssCurrentIdx * 100}%`;
+ssSlideContainer.classList.add('animated');
+
 
 function goToSlide(num) {
-  ssSlideContainer.style.left = `${-num * 100}%`;
+  ssSlideContainer.classList.add('animated');
+  ssSlideContainer.style.left = `-${num * 100}%`;
   ssCurrentIdx = num;
 
-  if(ssCurrentIdx === -5){
-    setTimeout(() => {
-      ssSlideContainer.classList.remove('animated');
-      ssSlideContainer.style.left = 0;
-      ssCurrentIdx = 0;
-    }, 400);
-    setTimeout(() => {
-      ssSlideContainer.classList.add('animated');
-    }, 450);
-    
+
+  if (ssCurrentIdx === ssSlideCount * 2) {
+      setTimeout(() => {
+          ssSlideContainer.classList.remove('animated'); 
+          ssSlideContainer.style.left = `-${ssSlideCount * 100}%`;
+          ssCurrentIdx = ssSlideCount;
+
+          setTimeout(() => {
+              ssSlideContainer.classList.add('animated');
+          }, 50);
+      }, 400);
   }
 }
-// 자동 슬라이드
 
+// 자동 슬라이드
 function AutoSlide() {
   timer = setInterval(() => {
-    let nextIdx = (ssCurrentIdx + 1) % ssSlideCount;
-    goToSlide(nextIdx);
+      goToSlide(ssCurrentIdx + 1);
   }, 4000);
 }
 
