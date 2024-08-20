@@ -29,25 +29,72 @@ body{
 }
 
 .cookie{
-  width: 400px;
-  height: 500px;
+  width: 300px;
+  height: 400px;
   position: fixed;
-  line-height: 27px;
+  font-size: 14px;
+  line-height: 24px;
   top: 150px;
   left: 100px;
-  padding: 40px 20px;
+  padding: 30px 20px;
   border: 2px solid var(--primary);
-  background: var(--white);
-  color: #222222;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
+  background: #222222;
+  color: var(--white);
+  z-index: 2;
+  display: none;
 }
+
+.cookie h5{
+  display: inline-block;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cookie h5 img{
+  width: 70%;
+}
+
+.cookie.show{
+  display: block;
+}
+
+.project a{
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.popup{
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 14px;
+}
+
+hr{
+  margin: 10px auto;
+}
+
+.cookie button{
+  width: 50px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  background: #222222;
+  font-size: 12px;
+  color: var(--text-color);
+}
+
 
 
 /* HEADER */
 
 header .top_nav > div{
   position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   width: 95%;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   display: flex;
   justify-content: space-around;
   white-space: nowrap;
@@ -56,9 +103,9 @@ header .top_nav > div{
 .top_nav{
   width: 100%;
   height: 81px;
-  position: absolute;
   background: linear-gradient(rgba(0, 0, 0, .7) 81px, rgba(0, 0, 0, .5) 81px);
   transition: height 0.5s ease-out;
+  overflow: hidden;
 }
 
 .top_nav a{
@@ -74,9 +121,9 @@ header .top_nav > div{
 }
 
 .top_nav nav > ul{
+  position: relative;
   display: flex;
   gap: 100px;
-  position: relative;
 }
 
 .top_nav .login{
@@ -96,10 +143,11 @@ nav > ul > li{
 
 
 nav > ul > li ul{
+  /* width: 100%; */
   display: none;
-  padding-top: 20px;
-  align-items: center;
   position: absolute;
+  align-items: center;
+  padding-top: 20px;
 }
 
 nav > ul > li:hover ul{
@@ -137,7 +185,7 @@ header button{
   gap: 10px;
   border: none;
   background: none;
-  z-index: 1;
+  z-index: 2;
   cursor: pointer;
 }
 
@@ -300,7 +348,7 @@ form button{
 
 
 .ss-slide-wrapper{
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
 }
