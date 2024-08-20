@@ -1,15 +1,16 @@
 /* MENU */
 
-let menus = document.querySelectorAll('.top_nav > nav > ul > li');
+let menus = document.querySelectorAll('nav > ul > li');
 let topNav = document.querySelector('.top_nav')
 let topNavOrgHeight = topNav.offsetHeight;
+console.log(topNavOrgHeight);
 
 
 menus.forEach(item => {
-  
-  item.addEventListener('mouseenter', () => {
-    let subMenuHeight = item.querySelector('ul').offsetHeight;
+  item.addEventListener('mouseenter', (e) => {
+    let subMenuHeight = e.target.querySelector('ul').offsetHeight;
     topNav.style.height = subMenuHeight + topNavOrgHeight + 'px';
+    console.log(subMenuHeight);
   });
 
   item.addEventListener('mouseleave', () => {
