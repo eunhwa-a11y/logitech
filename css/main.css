@@ -26,6 +26,7 @@ body{
   margin: 0;
   top: 0;
   transition: 0.5s ease-out;
+  overflow-y: scroll;
 }
 
 .cookie{
@@ -90,11 +91,10 @@ hr{
 /* HEADER */
 
 header .top_nav > div{
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  position: absolute;
+  top: 0%;
+  padding: 25px;
   width: 95%;
-  /* margin-top: 25px; */
   display: flex;
   justify-content: space-around;
   white-space: nowrap;
@@ -103,9 +103,12 @@ header .top_nav > div{
 .top_nav{
   width: 100%;
   height: 81px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
   background: linear-gradient(rgba(0, 0, 0, .7) 81px, rgba(0, 0, 0, .5) 81px);
   transition: height 0.5s ease-out;
-  overflow: hidden;
 }
 
 .top_nav a{
@@ -154,6 +157,11 @@ nav > ul > li:hover ul{
   display: block;
 }
 
+nav > ul > li ul li:hover a{
+  font-weight: 700;
+  color: var(--white);
+}
+
 nav > ul > li ul li{
   white-space: nowrap;
 }
@@ -163,6 +171,8 @@ nav > ul > li ul li{
   height: 100vh;
   overflow: hidden;
   position: relative;
+  top: 0;
+  left: 0;
   z-index: -1;
 }
 
@@ -351,6 +361,7 @@ form button{
   width: 100%;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 
@@ -417,9 +428,10 @@ footer .container{
   bottom: -100%;
   left: 0;
   width: 100%;
-  height: 400px;
+  height: 300px;
+  font-size: 14px;
   background: rgba(0, 0, 0, .7);
-  transition: 0.5s ease-in-out;
+  transition: 0.5s 0.3s ease-in-out;
   z-index: 1;
 }
 
@@ -434,12 +446,12 @@ footer .container .inner{
   gap: 200px;
   justify-content: space-between;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 30px;
   box-sizing: border-box;
 }
 
 footer .container .inner .company img{
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 footer .container .inner .company ul{
@@ -453,46 +465,59 @@ footer .container .inner .company ul a{
   font-weight: 700;
 }
 
+footer .container .inner .company ul a:hover{
+  color: var(--primary);
+}
+
 footer .container .inner .call{
   font-size: var(--menu);
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 footer .container .inner .number em{
-  font-size: var(--main);
+  font-size: 30px;
   font-weight: 700;
   color: var(--primary);
   margin-right: 10px;
 }
 
 footer .container .inner .sns{
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
-  gap: 60px;
-  margin-top: 33px;
+  gap: 40px;
+  margin-top: 25px;
 }
 
 footer .container .inner .sns i{
   cursor: pointer;
 }
 
+footer .container .inner .sns i:hover{
+  color: var(--primary);
+}
+
 footer .container .clause{
   display: flex;
   gap: 40px;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 40px;
   position: relative;
 }
 
 footer .container .clause a{
-  font-size: 16px;
+  font-size: 14px;
   color: var(--white);
+}
+
+footer .container .clause a:hover{
+  font-size: 14px;
+  color: var(--primary);
 }
 
 footer .container .center{
   text-align: center;
-  margin: 52px;
+  margin: 30px;
 }
 
 footer .container .clause:after{
@@ -503,5 +528,5 @@ footer .container .clause:after{
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 42px;
+  margin-top: 30px;
 }
