@@ -10,6 +10,7 @@ menus.forEach(item => {
   item.addEventListener('mouseenter', (e) => {
     let subMenuHeight = e.target.querySelector('ul').offsetHeight;
     topNav.style.height = subMenuHeight + topNavOrgHeight + 'px';
+    display:block
     console.log(subMenuHeight);
   });
 
@@ -113,7 +114,6 @@ const pagerLeft = slideWrapper.querySelector('.pager .left');
 const pagerRight = slideWrapper.querySelector('.pager .right');
 
 
-
 slideContainer.style.width = (slideWidth*slideCount)+(slideGap*(slideCount))+'px';
 
 
@@ -128,8 +128,7 @@ function moveSlide(num){
 
 pagerRight.addEventListener('click', (e) => {
   e.preventDefault();
-  
-  if(currentIdx < (slideCount - maxSlides)) {
+  if(currentIdx < 1 ) {
     moveSlide(currentIdx + 1);
   }
 });
@@ -162,19 +161,20 @@ let ssSlides = ssSlideContainer.querySelectorAll('.ss-slide-container li');
 const ssSlideCount = ssSlides.length;
 let ssCurrentIdx = 0;
 let timer;
+const ssPager = ssSlideWrapper.querySelector('pager');
 let ssSlideWidth = ssSlideWrapper.offsetWidth;
 
 
 // 슬라이드 복사본
 
 for(let i = 0; i < ssSlideCount; i++){
-  let cloneSlide = ssSlides[i].cloneNode('ture');
+  let cloneSlide = ssSlides[i].cloneNode('true');
   cloneSlide.classList.add('clone');
   ssSlideContainer.appendChild(cloneSlide);
 }
 
 for(let i = ssSlideCount - 1; i >= 0; i--){
-  let cloneSlide = ssSlides[i].cloneNode('ture');
+  let cloneSlide = ssSlides[i].cloneNode('true');
   cloneSlide.classList.add('clone');
   ssSlideContainer.prepend(cloneSlide);
 }
@@ -199,7 +199,7 @@ function goToSlide(num) {
     }, 400);
     setTimeout(() => {
       ssSlideContainer.classList.add('animated');
-    }, 500);
+    }, 450);
     
   }
 }
