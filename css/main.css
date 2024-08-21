@@ -203,6 +203,7 @@ nav > ul > li ul li{
 }
 
 header button{
+  height: 48px;
   position: fixed;
   right: 50px;
   top: 50%;
