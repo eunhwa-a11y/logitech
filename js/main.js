@@ -1,3 +1,54 @@
+/* COOKIE */
+
+const popup = document.querySelector('.cookie');
+const check = document.querySelector('#check');
+const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+
+  if(check.checked){
+    setCookie('Portfolio', 'resserafim', '1');
+  }else{
+    delCookie('Portfolio', 'resserafim', '');
+  }
+
+  popup.classList.remove('show');
+
+});
+
+function setCookie(name, val, due){
+
+  let date = new Date();
+  date.setDate(date.getDate() + due);
+  console.log('date');
+
+  let myCookie = `${name} = ${val};expires=` + date.toUTCString();
+  document.cookie = myCookie;
+
+}
+
+function delCookie(name, val){
+
+  let date = new Date();
+  date.setDate(date.getDate() - 1);
+  console.log('date');
+
+  let myCookie = `${name} = ${val};expires=` + date.toUTCString();
+  document.cookie = myCookie;
+
+}
+
+function checkCookie(name, val){
+
+  if(document.cookie.search(`${name}=${val}`) === -1){
+    popup.classList.add('show');
+  }
+
+}
+
+checkCookie('Portfolio', 'resserafim');
+
+
 /* MENU */
 
 let menus = document.querySelectorAll('nav > ul > li');
@@ -10,7 +61,6 @@ menus.forEach(item => {
   item.addEventListener('mouseenter', (e) => {
     let subMenuHeight = e.target.querySelector('ul').offsetHeight;
     topNav.style.height = subMenuHeight + topNavOrgHeight + 'px';
-    display:block
     console.log(subMenuHeight);
   });
 
@@ -26,6 +76,7 @@ menus.forEach(item => {
 const body = document.querySelector('body');
 const sections = body.querySelectorAll('.section');
 const footer = document.querySelector('footer .container');
+let sectionsCount = sections.length;
 let page = 0;
 const upBtn = document.querySelector('header button .fa-angles-up');
 const downBtn = document.querySelector('header button .fa-angles-down');
@@ -43,8 +94,20 @@ function pageMove(num){
     footer.classList.add('visible');
   }else{
     footer.classList.remove('visible');
-  }
+  };
   console.log(page);
+  
+  if(page === sectionsCount - 1){
+    downBtn.classList.add('disabled');
+  }else{
+    downBtn.classList.remove('disabled');
+  };
+
+  if(page === 0){
+    upBtn.classList.add('disabled');
+  }else{
+    upBtn.classList.remove('disabled');
+  };
 }
 
 downBtn.addEventListener('click', () => {
@@ -69,6 +132,7 @@ window.addEventListener('scroll', () => {
         document.body.classList.remove('active');
       }, 500);
     }
+
   }
 
   if(window.scrollY < lastScroll){
@@ -159,13 +223,12 @@ const ssSlideWrapper = document.querySelector('.ss-slide-wrapper');
 const ssSlideContainer = ssSlideWrapper.querySelector('.ss-slide-container');
 let ssSlides = ssSlideContainer.querySelectorAll('.ss-slide-container li');
 const ssSlideCount = ssSlides.length;
-let ssCurrentIdx = ssSlideCount;
+let ssCurrentIdx = 0;
 let timer;
 const ssPager = ssSlideWrapper.querySelector('.pager');
 let ssSlideWidth = ssSlideWrapper.offsetWidth;
 
 // 슬라이드 복사본 생성
-
 for (let i = 0; i < ssSlideCount; i++) {
   let cloneSlide = ssSlides[i].cloneNode(true);
   cloneSlide.classList.add('clone');
@@ -179,32 +242,31 @@ for (let i = ssSlideCount - 1; i >= 0; i--) {
 }
 
 // 모든 슬라이드 재배치
-
 let allSsSlides = ssSlideContainer.querySelectorAll('.ss-slide-container li');
 allSsSlides.forEach((slide, idx) => {
   slide.style.left = `${idx * 100}%`;
 });
 
-
-ssSlideContainer.style.left = `-${ssCurrentIdx * 100}%`;
+ssSlideContainer.style.left = `-${ssSlideCount * 100}%`;
+ssCurrentIdx = ssSlideCount;
 ssSlideContainer.classList.add('animated');
-
 
 function goToSlide(num) {
   ssSlideContainer.classList.add('animated');
   ssSlideContainer.style.left = `-${num * 100}%`;
   ssCurrentIdx = num;
 
-
   if (ssCurrentIdx === ssSlideCount * 2) {
       setTimeout(() => {
-          ssSlideContainer.classList.remove('animated'); 
+          ssSlideContainer.classList.remove('animated');
           ssSlideContainer.style.left = `-${ssSlideCount * 100}%`;
           ssCurrentIdx = ssSlideCount;
-
-          setTimeout(() => {
-              ssSlideContainer.classList.add('animated');
-          }, 50);
+      }, 400);
+  } else if (ssCurrentIdx === 0) { 
+      setTimeout(() => {
+          ssSlideContainer.classList.remove('animated');
+          ssSlideContainer.style.left = `-${ssSlideCount * (ssSlideCount - 1)}%`;
+          ssCurrentIdx = ssSlideCount - 1;
       }, 400);
   }
 }
